@@ -22,6 +22,7 @@ import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminOrdersRouteImport } from './routes/admin.orders'
 import { Route as AdminProductsRouteImport } from './routes/admin.products'
 import { Route as CategoryCategoryRouteImport } from './routes/category.$category'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
@@ -91,6 +92,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminOrdersRoute = AdminOrdersRouteImport.update({
+  id: '/admin/orders',
+  path: '/admin/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminProductsRoute = AdminProductsRouteImport.update({
   id: '/admin/products',
   path: '/admin/products',
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/admin/categories': typeof AdminCategoriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/orders': typeof AdminOrdersRoute
   '/admin/products': typeof AdminProductsRoute
   '/category/$category': typeof CategoryCategoryRoute
   '/product/$id': typeof ProductIdRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/admin/categories': typeof AdminCategoriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/orders': typeof AdminOrdersRoute
   '/admin/products': typeof AdminProductsRoute
   '/category/$category': typeof CategoryCategoryRoute
   '/product/$id': typeof ProductIdRoute
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/admin/categories': typeof AdminCategoriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/orders': typeof AdminOrdersRoute
   '/admin/products': typeof AdminProductsRoute
   '/category/$category': typeof CategoryCategoryRoute
   '/product/$id': typeof ProductIdRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/admin/categories'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/orders'
     | '/admin/products'
     | '/category/$category'
     | '/product/$id'
@@ -196,6 +206,7 @@ export interface FileRouteTypes {
     | '/admin/categories'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/orders'
     | '/admin/products'
     | '/category/$category'
     | '/product/$id'
@@ -214,6 +225,7 @@ export interface FileRouteTypes {
     | '/admin/categories'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/orders'
     | '/admin/products'
     | '/category/$category'
     | '/product/$id'
@@ -233,6 +245,7 @@ export interface RootRouteChildren {
   AdminCategoriesRoute: typeof AdminCategoriesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminOrdersRoute: typeof AdminOrdersRoute
   AdminProductsRoute: typeof AdminProductsRoute
   CategoryCategoryRoute: typeof CategoryCategoryRoute
   ProductIdRoute: typeof ProductIdRoute
@@ -331,6 +344,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/orders': {
+      id: '/admin/orders'
+      path: '/admin/orders'
+      fullPath: '/admin/orders'
+      preLoaderRoute: typeof AdminOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/products': {
       id: '/admin/products'
       path: '/admin/products'
@@ -369,6 +389,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminCategoriesRoute: AdminCategoriesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminOrdersRoute: AdminOrdersRoute,
   AdminProductsRoute: AdminProductsRoute,
   CategoryCategoryRoute: CategoryCategoryRoute,
   ProductIdRoute: ProductIdRoute,
