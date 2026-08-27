@@ -34,21 +34,27 @@ export function ConfirmDialog({
   message,
   onCancel,
   onConfirm,
+  title = "Please confirm",
+  confirmLabel = "Confirm",
+  cancelLabel = "Cancel",
 }: {
   open: boolean;
   message: string;
   onCancel: () => void;
   onConfirm: () => void;
+  title?: string;
+  confirmLabel?: string;
+  cancelLabel?: string;
 }) {
   return (
-    <Modal open={open} onClose={onCancel} title="Please confirm" width="max-w-sm">
+    <Modal open={open} onClose={onCancel} title={title} width="max-w-sm">
       <p className="text-sm text-muted-foreground">{message}</p>
       <div className="mt-5 flex justify-end gap-2">
         <button className="btn-base btn-outline" onClick={onCancel}>
-          Cancel
+          {cancelLabel}
         </button>
         <button className="btn-base btn-primary" onClick={onConfirm}>
-          Confirm
+          {confirmLabel}
         </button>
       </div>
     </Modal>
